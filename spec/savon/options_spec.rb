@@ -528,6 +528,15 @@ describe "Options" do
     end
   end
 
+  context "global :http_params" do
+    it "sets the param auth credentials" do
+      client = new_client(:endpoint => @server.url(:digest_auth), digest_auth: %w[admin secret], http_params: { token: "XX_AUTH_TOKEN_XX" } )
+      response = client.call(:authenticate)
+
+      expect(response.http.body).to eq("digest-auth")
+    end
+  end
+
   context "global :ntlm" do
     it "sets the ntlm credentials to use" do
       credentials = ["admin", "secret"]

@@ -79,6 +79,7 @@ module Savon
     end
 
     def call_with_logging(request)
+      request.query(@globals[:http_params])
       @logger.log(request) { HTTPI.post(request, @globals[:adapter]) }
     end
 

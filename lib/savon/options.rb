@@ -92,7 +92,8 @@ module Savon
         :no_message_tag              => false,
         :follow_redirects            => false,
         :unwrap                      => false,
-        :host                        => nil
+        :host                        => nil,
+        :http_params                 => {}
       }
 
       options = defaults.merge(options)
@@ -144,6 +145,10 @@ module Savon
     # A Hash of HTTP headers.
     def headers(headers)
       @options[:headers] = headers
+    end
+
+    def http_params(value)
+      @options[:http_params] = value
     end
 
     # Open timeout in seconds.
