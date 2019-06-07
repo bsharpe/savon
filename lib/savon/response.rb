@@ -144,16 +144,15 @@ module Savon
     def nori
       return @nori if @nori
 
-      nori_options = {
+      non_nil_nori_options = {
         :delete_namespace_attributes => @globals[:delete_namespace_attributes],
         :strip_namespaces            => @globals[:strip_namespaces],
         :convert_tags_to             => @globals[:convert_response_tags_to],
         :convert_attributes_to       => @globals[:convert_attributes_to],
         :advanced_typecasting        => @locals[:advanced_typecasting],
         :parser                      => @locals[:response_parser]
-      }
+      }.compact
 
-      non_nil_nori_options = nori_options.reject { |_, value| value.nil? }
       @nori = Nori.new(non_nil_nori_options)
     end
 

@@ -27,6 +27,7 @@ Gem::Specification.new do |s|
   s.add_dependency "mail",     "> 2.5"
 
   s.add_development_dependency "rack"
+  s.add_development_dependency "awesome_print"
   s.add_development_dependency "puma",  "> 3.0"
 
   s.add_development_dependency "rake",  "> 10.1"

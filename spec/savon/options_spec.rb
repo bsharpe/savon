@@ -512,7 +512,7 @@ describe "Options" do
 
   context "global :basic_auth" do
     it "sets the basic auth credentials" do
-      client = new_client(:endpoint => @server.url(:basic_auth), :basic_auth => ["admin", "secret"])
+      client = new_client(:endpoint => @server.url(:basic_auth), :basic_auth => %w[admin secret])
       response = client.call(:authenticate)
 
       expect(response.http.body).to eq("basic-auth")
@@ -521,7 +521,7 @@ describe "Options" do
 
   context "global :digest_auth" do
     it "sets the digest auth credentials" do
-      client = new_client(:endpoint => @server.url(:digest_auth), :digest_auth => ["admin", "secret"])
+      client = new_client(:endpoint => @server.url(:digest_auth), :digest_auth => %w[admin secret])
       response = client.call(:authenticate)
 
       expect(response.http.body).to eq("digest-auth")
@@ -539,7 +539,7 @@ describe "Options" do
 
   context "global :ntlm" do
     it "sets the ntlm credentials to use" do
-      credentials = ["admin", "secret"]
+      credentials = %w[admin secret]
       client = new_client(:endpoint => @server.url, :ntlm => credentials)
 
       # TODO: find a way to integration test this. including an entire ntlm

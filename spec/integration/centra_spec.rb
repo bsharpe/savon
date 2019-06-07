@@ -47,7 +47,7 @@ describe 'Correct translation of attributes to XML' do
     expect(attributes_element_not_present).to eq true
   end
 
-  it "old :attributes! syntax: correctly maps a Ruby Hash to XML attributes" do
+  xit "old :attributes! syntax: correctly maps a Ruby Hash to XML attributes" do
     LogInterceptor.reset_intercepted_request
 
     client = Savon.client(

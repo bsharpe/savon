@@ -7,6 +7,7 @@ require "savon/response"
 require "savon/request_logger"
 require "savon/http_error"
 require "mail"
+require "awesome_print"
 
 module Savon
   class Operation
@@ -79,7 +80,7 @@ module Savon
     end
 
     def call_with_logging(request)
-      request.query = @globals[:http_params]
+      request.query = @globals[:http_params] unless @globals[:http_params].empty?
       @logger.log(request) { HTTPI.post(request, @globals[:adapter]) }
     end
 
